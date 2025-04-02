@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TfiEmail } from "react-icons/tfi";
 import { CiLock } from "react-icons/ci";
 import { TiUser } from "react-icons/ti";
@@ -11,6 +11,7 @@ import {
   sendmail,
   checkotpv
 } from "../helpers/index"
+import "./Auth.css"; // Add this for the custom CSS
 
 function Auth() {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ function Auth() {
   const [otpv, cotpv] = useState("");
   const [vo, svo] = useState(false);
   const [cs, scs] = useState("");
+  const [isFlipping, setIsFlipping] = useState(false);
   const userInfos = {
     email: "",
     password: "",
@@ -35,13 +37,24 @@ function Auth() {
     setUser({ ...user, [name]: value });
   };
 
+  const toggleState = (newState) => {
+    if (state !== newState) {
+      setIsFlipping(true);
+      setTimeout(() => {
+        setState(newState);
+        setError("");
+        setIsFlipping(false);
+      }, 400); // Half of animation duration
+    }
+  };
+
   const handleSubmit = async () => {
-    var temail = email.toLowerCase()
+    var temail = email.toLowerCase();
 
     if (state === "Log In") {
       try {
         if (!temail || !password) {
-          setError('All feilds are required !')
+          setError('All fields are required!')
           return;
         }
         const data = await checkifverify(temail);
@@ -51,11 +64,11 @@ function Auth() {
         else if (
           data.msg === 'ne'
         ) {
-          setError("Please Sign Up First ");
+          setError("Please Sign Up First");
           return;
         }
         else {
-          setError("Please Sign up and Verify Your Email ");
+          setError("Please Sign up and Verify Your Email");
           return;
         }
       } catch (error) {
@@ -64,26 +77,27 @@ function Auth() {
       logIn();
     } else {
       if (!name || !temail || !password) {
-        setError('All feilds are required !')
+        setError('All fields are required!')
         return;
       }
       if (vo === false) {
-        setError('An OTP has been send to your mail for verification')
+        setError('An OTP has been sent to your email for verification')
         const datas = await sendmail(temail, name);
         scs(true);
       }
     }
   };
+
   const checkotp = async () => {
     try {
       var temail = email.toLowerCase()
-
       const data = await checkotpv(temail, otpv);
     } catch (error) {
       setError('An Error Occurred')
       // console.log("cannot verify otp")
     }
   }
+
   const logIn = async () => {
     try {
       var temail = email.toLowerCase()
@@ -95,7 +109,7 @@ function Auth() {
         }
       ); 
       setError('')
-      setSuccess("Success !")
+      setSuccess("Success!")
       setTimeout(() => {
         dispatch({ type: "LOGIN", payload: data });
         Cookies.set("user", JSON.stringify(data), { expires: 15 });
@@ -131,6 +145,7 @@ function Auth() {
       setError(error.response.data.message);
     }
   };
+
   const verifyOTP = async () => {
     try {
       var temail = email.toLowerCase()
@@ -140,149 +155,162 @@ function Auth() {
         signUp();
       }
       else {
-        setError("OTP do not match");
+        setError("OTP does not match");
       }
     } catch (error) {
       setError("ERROR OCCURRED!");
       // console.log("error in matching")
     }
   }
+
   const signUpWithGoogle = () => {
     window.open(`${process.env.REACT_APP_BACKEND_URL}/auth/google`, "_self");
   }
 
   return (
-    <div className="containerzz">
-      <div className="auth_wrapper">
-        <div className="img">
-          <img src="/sp.gif" alt="rfe" />
-          <span>{state}</span>
+    <div className="container">
+      <div className={`auth-card ${isFlipping ? 'flipping' : ''}`}>
+        <div className="auth-header">
+          <div className="logo-container">
+            <img src="/sp.gif" alt="Logo" className="logo" />
+          </div>
+          <h2 className="auth-title">{state}</h2>
         </div>
-        <div className="login-cont">
-          <div
-            className="tab"
-            style={{
-              borderBottom: `${state === "Log In" ? "2px solid black" : ""}`,
-              color: `${state === "Log In" ? "black" : ""}`,
-            }}
-            onClick={() => {
-              setState("Log In");
-              setError("")
-            }}
+        
+        <div className="tab-container">
+          <span 
+            className={`tab ${state === "Log In" ? 'active' : ''}`}
+            onClick={() => toggleState("Log In")}
           >
             Log In
-          </div>
-          <div
-            className="tab"
-            style={{
-              borderBottom: `${state === "Sign Up" ? "2px solid black" : ""}`,
-              color: `${state === "Sign Up" ? "black" : ""}`,
-            }}
-            onClick={() => {
-              setState("Sign Up");
-              setError("")
-
-            }}
+          </span>
+          <span 
+            className={`tab ${state === "Sign Up" ? 'active' : ''}`}
+            onClick={() => toggleState("Sign Up")}
           >
             Sign Up
-          </div>
+          </span>
         </div>
-        {state === "Log In" ? (
-          <div>
-            {/* <div className="social google">
-              <img src="/google.jpg" alt="google" />
-              <span onClick={() => signUpWithGoogle()} >Log in with Google</span>
-            </div>
-            <div className="social facebook">
-              <img src="/Facebook.png" alt="facebook" />
-              <span>Log in with Facebook</span>
-            </div> */}
-            <div className="social google">
-              <img src="/google.jpg" alt="google" />
-              {/* <GoogleOAuthProvider clientId={`${process.env.GOOGLE_CLIENT}`}>...</GoogleOAuthProvider>; */}
-              <span onClick={() => signUpWithGoogle()}>Sign In with Google</span>
-            </div>
-          </div>
-        ) : (
-          <div>
-            <div className="social google">
-              <img src="/google.jpg" alt="google" />
-              {/* <GoogleOAuthProvider clientId={`${process.env.GOOGLE_CLIENT}`}>...</GoogleOAuthProvider>; */}
-              <span onClick={() => signUpWithGoogle()}>Sign Up with Google</span>
-            </div>
-          </div>
-          
-        )}
-        {/* <span className="or">or</span> */}
-        OR
-        <form action="">
-          {state === "Sign Up" ? (
-            <div className="input">
-              <TiUser size={16} />
-              <input
-                type="text"
-                name="name"
-                placeholder="Enter full name"
-                value={name}
-                onChange={handleRegisterChange}
-              />
+        
+        <div className="auth-content">
+          {state === "Log In" ? (
+            <div>
+              <button
+                onClick={() => signUpWithGoogle()}
+                className="social-button"
+              >
+                Sign In with Google
+              </button>
             </div>
           ) : (
-            ""
+            <div>
+              <button
+                onClick={() => signUpWithGoogle()}
+                className="social-button"
+              >
+                Sign Up with Google
+              </button>
+            </div>
           )}
-          <div className="input">
-            <TfiEmail size={14} />
-            <input
-              type="text"
-              name="email"
-              placeholder="Enter email"
-              value={email}
-              onChange={handleRegisterChange}
-            />
+          
+          <div className="divider">
+            <span className="divider-text">OR</span>
           </div>
-          <div className="input">
-            <CiLock size={16} />
-            <input
-              type="password"
-              name="password"
-              placeholder="Enter password"
-              value={password}
-              onChange={handleRegisterChange}
-            />
-          </div>
-          {(cs) && state === "Sign Up" ?
-            <div className="input">
+          
+          <form className="auth-form">
+            {state === "Sign Up" && (
+              <div className="input-group">
+                <span className="input-icon"><TiUser /></span>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Enter full name"
+                  value={name}
+                  onChange={handleRegisterChange}
+                  className="input-field"
+                />
+              </div>
+            )}
+            
+            <div className="input-group">
+              <span className="input-icon"><TfiEmail /></span>
               <input
-                type="number"
-                name="OTP"
-                placeholder="OTP"
-                value={otpv}
-                onChange={(e) => { cotpv(e.target.value) }}
+                type="email"
+                name="email"
+                placeholder="Enter email"
+                value={email}
+                onChange={handleRegisterChange}
+                className="input-field"
               />
             </div>
-            : <></>}
-        </form>
-        {error && <span className="errorValidation" >{error}</span>}
-        {success && <span className="RegisterSuccess" >{success}</span>}
-        {state === "Sign Up" ? (
-          <div className="dilougue">
-            By signing up, you agree to our <b>terms of service</b> and
-            <b>privacy policy</b>. No credit card required.
+            
+            <div className="input-group">
+              <span className="input-icon"><CiLock /></span>
+              <input
+                type="password"
+                name="password"
+                placeholder="Enter password"
+                value={password}
+                onChange={handleRegisterChange}
+                className="input-field"
+              />
+            </div>
+            
+            {cs && state === "Sign Up" && (
+              <div className="input-group">
+                <input
+                  type="number"
+                  name="OTP"
+                  placeholder="Enter OTP"
+                  value={otpv}
+                  onChange={(e) => cotpv(e.target.value)}
+                  className="input-field otp-field"
+                />
+              </div>
+            )}
+          </form>
+          
+          {error && (
+            <div className="error-message">
+              <span>{error}</span>
+            </div>
+          )}
+          
+          {success && (
+            <div className="success-message">
+              <span>{success}</span>
+            </div>
+          )}
+          
+          {state === "Sign Up" ? (
+            <div className="tos-text">
+              By signing up, you agree to our <span className="highlight">terms of service</span> and
+              <span className="highlight"> privacy policy</span>. No credit card required.
+            </div>
+          ) : (
+            <div className="forgot-password">
+              <Link to="/resetPassword">Don't remember your password?</Link>
+            </div>
+          )}
+          
+          <div className="button-container">
+            {cs && state === "Sign Up" ? (
+              <button
+                onClick={verifyOTP}
+                className="auth-button"
+              >
+                Verify OTP
+              </button>
+            ) : (
+              <button
+                onClick={handleSubmit}
+                className="auth-button"
+              >
+                {state === "Sign Up" ? "SIGN UP FOR FREE" : "LOG IN"}
+              </button>
+            )}
           </div>
-        ) : (
-          <div className="forget">
-            <Link to="/resetPassword">Don't remember your password?</Link>
-          </div>
-        )}
-        {(cs) && state === "Sign Up" ?
-          <div className="footer" onClick={verifyOTP}>
-            {state === "Sign Up" ? "Verify OTP" : "LOG IN"}
-          </div>
-          :
-          <div className="footer" onClick={handleSubmit}>
-            {state === "Sign Up" ? "SIGN UP FOR FREE" : "LOG IN"}
-          </div>
-        }
+        </div>
       </div>
     </div>
   );
