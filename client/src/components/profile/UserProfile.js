@@ -218,7 +218,7 @@ function UserProfile() {
       height: "128px",
       objectFit: "cover",
       borderRadius: "50%",
-      border: "4px solid #7e57c2", // Subtle purple border
+      border: "4px solid #61dafb", // Subtle purple border
       marginBottom: "16px",
       boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
     },
