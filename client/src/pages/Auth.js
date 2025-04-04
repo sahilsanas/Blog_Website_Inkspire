@@ -6,12 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
-import {
-  checkifverify,
-  sendmail,
-  checkotpv
-} from "../helpers/index"
-import "./Auth.css"; // Add this for the custom CSS
+import { checkifverify, sendmail, checkotpv } from "../helpers/index"
+import "./Auth.css"; // We'll update this CSS file
 
 function Auth() {
   const dispatch = useDispatch();
@@ -22,7 +18,6 @@ function Auth() {
   const [otpv, cotpv] = useState("");
   const [vo, svo] = useState(false);
   const [cs, scs] = useState("");
-  const [isFlipping, setIsFlipping] = useState(false);
   const userInfos = {
     email: "",
     password: "",
@@ -39,12 +34,8 @@ function Auth() {
 
   const toggleState = (newState) => {
     if (state !== newState) {
-      setIsFlipping(true);
-      setTimeout(() => {
-        setState(newState);
-        setError("");
-        setIsFlipping(false);
-      }, 400); // Half of animation duration
+      setState(newState);
+      setError("");
     }
   };
 
@@ -59,11 +50,9 @@ function Auth() {
         }
         const data = await checkifverify(temail);
         if (data.msg === "ok") {
-
+          // Continue with login
         }
-        else if (
-          data.msg === 'ne'
-        ) {
+        else if (data.msg === 'ne') {
           setError("Please Sign Up First");
           return;
         }
@@ -87,16 +76,6 @@ function Auth() {
       }
     }
   };
-
-  const checkotp = async () => {
-    try {
-      var temail = email.toLowerCase()
-      const data = await checkotpv(temail, otpv);
-    } catch (error) {
-      setError('An Error Occurred')
-      // console.log("cannot verify otp")
-    }
-  }
 
   const logIn = async () => {
     try {
@@ -168,147 +147,207 @@ function Auth() {
   }
 
   return (
-    <div className="container">
-      <div className={`auth-card ${isFlipping ? 'flipping' : ''}`}>
-        <div className="auth-header">
-          <div className="logo-container">
-            <img src="/sp.gif" alt="Logo" className="logo" />
-          </div>
-          <h2 className="auth-title">{state}</h2>
-        </div>
-        
-        <div className="tab-container">
-          <span 
-            className={`tab ${state === "Log In" ? 'active' : ''}`}
+    <div className="auth-container">
+      <div className="auth-box">
+        <div className="auth-tabs">
+          <div 
+            className={`auth-tab ${state === "Log In" ? 'active' : ''}`}
             onClick={() => toggleState("Log In")}
           >
             Log In
-          </span>
-          <span 
-            className={`tab ${state === "Sign Up" ? 'active' : ''}`}
+          </div>
+          <div 
+            className={`auth-tab ${state === "Sign Up" ? 'active' : ''}`}
             onClick={() => toggleState("Sign Up")}
           >
             Sign Up
-          </span>
+          </div>
+          <div className="tab-slider" style={{ 
+            transform: state === "Log In" ? 'translateX(0)' : 'translateX(100%)'
+          }}></div>
         </div>
-        
-        <div className="auth-content">
-          {state === "Log In" ? (
-            <div>
+
+        <div className="auth-forms-container">
+          <div 
+            className="auth-forms-slider"
+            style={{ 
+              transform: state === "Log In" ? 'translateX(0)' : 'translateX(-50%)'
+            }}
+          >
+            {/* Login Form */}
+            <div className="auth-form-panel">
+              <div className="logo-container">
+                <img src="/sp.gif" alt="Logo" className="logo" />
+              </div>
+              <h2 className="auth-title">Log In</h2>
+
               <button
                 onClick={() => signUpWithGoogle()}
                 className="social-button"
               >
                 Sign In with Google
               </button>
+
+              <div className="divider">
+                <span className="divider-text">OR</span>
+              </div>
+
+              <form className="auth-form">
+                <div className="input-group">
+                  <span className="input-icon"><TfiEmail /></span>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter email"
+                    value={email}
+                    onChange={handleRegisterChange}
+                    className="input-field"
+                  />
+                </div>
+                
+                <div className="input-group">
+                  <span className="input-icon"><CiLock /></span>
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Enter password"
+                    value={password}
+                    onChange={handleRegisterChange}
+                    className="input-field"
+                  />
+                </div>
+              </form>
+
+              {state === "Log In" && error && (
+                <div className="error-message">
+                  <span>{error}</span>
+                </div>
+              )}
+              
+              {state === "Log In" && success && (
+                <div className="success-message">
+                  <span>{success}</span>
+                </div>
+              )}
+
+              <div className="forgot-password">
+                <Link to="/resetPassword">Don't remember your password?</Link>
+              </div>
+              
+              <div className="button-container">
+                <button
+                  onClick={handleSubmit}
+                  className="auth-button"
+                >
+                  LOG IN
+                </button>
+              </div>
             </div>
-          ) : (
-            <div>
+
+            {/* Sign Up Form */}
+            <div className="auth-form-panel">
+              <div className="logo-container">
+                <img src="/sp.gif" alt="Logo" className="logo" />
+              </div>
+              <h2 className="auth-title">Sign Up</h2>
+
               <button
                 onClick={() => signUpWithGoogle()}
                 className="social-button"
               >
                 Sign Up with Google
               </button>
-            </div>
-          )}
-          
-          <div className="divider">
-            <span className="divider-text">OR</span>
-          </div>
-          
-          <form className="auth-form">
-            {state === "Sign Up" && (
-              <div className="input-group">
-                <span className="input-icon"><TiUser /></span>
-                <input
-                  type="text"
-                  name="name"
-                  placeholder="Enter full name"
-                  value={name}
-                  onChange={handleRegisterChange}
-                  className="input-field"
-                />
+
+              <div className="divider">
+                <span className="divider-text">OR</span>
               </div>
-            )}
-            
-            <div className="input-group">
-              <span className="input-icon"><TfiEmail /></span>
-              <input
-                type="email"
-                name="email"
-                placeholder="Enter email"
-                value={email}
-                onChange={handleRegisterChange}
-                className="input-field"
-              />
-            </div>
-            
-            <div className="input-group">
-              <span className="input-icon"><CiLock /></span>
-              <input
-                type="password"
-                name="password"
-                placeholder="Enter password"
-                value={password}
-                onChange={handleRegisterChange}
-                className="input-field"
-              />
-            </div>
-            
-            {cs && state === "Sign Up" && (
-              <div className="input-group">
-                <input
-                  type="number"
-                  name="OTP"
-                  placeholder="Enter OTP"
-                  value={otpv}
-                  onChange={(e) => cotpv(e.target.value)}
-                  className="input-field otp-field"
-                />
+
+              <form className="auth-form">
+                <div className="input-group">
+                  <span className="input-icon"><TiUser /></span>
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter full name"
+                    value={name}
+                    onChange={handleRegisterChange}
+                    className="input-field"
+                  />
+                </div>
+                
+                <div className="input-group">
+                  <span className="input-icon"><TfiEmail /></span>
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter email"
+                    value={email}
+                    onChange={handleRegisterChange}
+                    className="input-field"
+                  />
+                </div>
+                
+                <div className="input-group">
+                  <span className="input-icon"><CiLock /></span>
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Enter password"
+                    value={password}
+                    onChange={handleRegisterChange}
+                    className="input-field"
+                  />
+                </div>
+                
+                {cs && state === "Sign Up" && (
+                  <div className="input-group">
+                    <input
+                      type="number"
+                      name="OTP"
+                      placeholder="Enter OTP"
+                      value={otpv}
+                      onChange={(e) => cotpv(e.target.value)}
+                      className="input-field otp-field"
+                    />
+                  </div>
+                )}
+              </form>
+
+              {state === "Sign Up" && error && (
+                <div className="error-message">
+                  <span>{error}</span>
+                </div>
+              )}
+              
+              {state === "Sign Up" && success && (
+                <div className="success-message">
+                  <span>{success}</span>
+                </div>
+              )}
+
+              <div className="tos-text">
+                By signing up, you agree to our <span className="highlight">terms of service</span> and
+                <span className="highlight"> privacy policy</span>. No credit card required.
               </div>
-            )}
-          </form>
-          
-          {error && (
-            <div className="error-message">
-              <span>{error}</span>
+              
+              <div className="button-container">
+                {cs && state === "Sign Up" ? (
+                  <button
+                    onClick={verifyOTP}
+                    className="auth-button"
+                  >
+                    Verify OTP
+                  </button>
+                ) : (
+                  <button
+                    onClick={handleSubmit}
+                    className="auth-button"
+                  >
+                    SIGN UP FOR FREE
+                  </button>
+                )}
+              </div>
             </div>
-          )}
-          
-          {success && (
-            <div className="success-message">
-              <span>{success}</span>
-            </div>
-          )}
-          
-          {state === "Sign Up" ? (
-            <div className="tos-text">
-              By signing up, you agree to our <span className="highlight">terms of service</span> and
-              <span className="highlight"> privacy policy</span>. No credit card required.
-            </div>
-          ) : (
-            <div className="forgot-password">
-              <Link to="/resetPassword">Don't remember your password?</Link>
-            </div>
-          )}
-          
-          <div className="button-container">
-            {cs && state === "Sign Up" ? (
-              <button
-                onClick={verifyOTP}
-                className="auth-button"
-              >
-                Verify OTP
-              </button>
-            ) : (
-              <button
-                onClick={handleSubmit}
-                className="auth-button"
-              >
-                {state === "Sign Up" ? "SIGN UP FOR FREE" : "LOG IN"}
-              </button>
-            )}
           </div>
         </div>
       </div>
