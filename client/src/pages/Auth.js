@@ -7,7 +7,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 import { checkifverify, sendmail, checkotpv } from "../helpers/index"
-import "./Auth.css"; // We'll update this CSS file
+import "./Auth.css"; 
 
 function Auth() {
   const dispatch = useDispatch();
