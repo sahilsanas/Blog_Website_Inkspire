@@ -75,7 +75,7 @@ function HomePage({ user, category }) {
           </div>
         </div>
       </div>
-      <Footer />
+      
     </div>
   );
 }

@@ -209,7 +209,7 @@ const Editor = ({ placeholder, prevdata, pflag }) => {
           </form>
         </div>
       </div>
-      <Footer />
+        
     </div>
   );
 };

@@ -133,7 +133,7 @@ function ProfileOfOtherUser() {
           Followers: {folc}
         </div>
       </div>
-      <Footer />
+      
     </div>
   );
 }

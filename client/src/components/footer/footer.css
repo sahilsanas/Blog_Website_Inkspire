@@ -1,161 +1,188 @@
-.desktop-footer {
-  background-color: #0a1929;
-  color: #f5f5f5;
-  padding: 3rem 2rem;
-  font-family: 'Arial', sans-serif;
+/* footer.css */
+/* Basic reset and page setup for sticky footer */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-.footer-container {
+body {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
+  flex-direction: column;
+  min-height: 100vh; /* Viewport height */
 }
 
-.footer-column {
+/* Main content should grow to push footer down */
+main, .content, #root, .app {
+  flex: 1 0 auto; /* Grow to take available space */
+}
+
+/* Add these new styles to fix the footer overlap issue */
+.main-content-container {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  margin-bottom: 2rem; /* Add space before footer */
+}
+
+.editor-container {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure the editor area takes available space */
+.editor-wrapper {
   flex: 1;
-  min-width: 200px;
+}
+
+/* Sticky footer styles */
+.minimal-footer {
+  flex-shrink: 0; /* Prevent footer from shrinking */
+  background-color: #f8f8f8;
+  padding: 2rem 1.5rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #333;
+  border-top: 1px solid #eaeaea;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative; /* Ensure footer stays in document flow */
+  z-index: 10; /* Keep footer above other elements */
+  margin-top: auto; /* Push footer to the bottom if content is short */
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
   margin-bottom: 2rem;
-  padding: 0 1.5rem;
 }
 
-.footer-column h3 {
-  margin-bottom: 1.5rem;
-  position: relative;
-}
-
-.heading-accent {
-  color: #4dabf7;
+.footer-section h4 {
+  margin-top: 0;
+  margin-bottom: 1rem;
   font-weight: 600;
-  display: inline-block;
-  padding-bottom: 8px;
+  font-size: 1rem;
+}
+
+.section-title {
   position: relative;
+  padding-bottom: 5px;
 }
 
-.heading-accent::after {
-  content: '';
+.section-title::after {
+  content: "";
   position: absolute;
-  left: 0;
   bottom: 0;
-  width: 40px;
+  left: 0;
+  width: 30px;
   height: 2px;
-  background-color: #4dabf7;
+  background-color: #4a90e2;
 }
 
-.footer-column ul {
+.footer-section ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.footer-column li {
-  margin-bottom: 0.8rem;
+.footer-section li {
+  margin-bottom: 0.75rem;
 }
 
 .footer-link {
-  color: #a5d8ff;
-  transition: color 0.3s ease;
-  position: relative;
   cursor: pointer;
+  color: #555;
+  transition: color 0.2s ease;
 }
 
 .footer-link:hover {
-  color: #ffffff;
+  color: #4a90e2;
 }
 
-.footer-link:hover::before {
-  content: '›';
-  position: absolute;
-  left: -12px;
-  transition: transform 0.3s ease;
-}
-
-.newsletter-signup {
-  max-width: 600px;
-  margin: 0 auto 2rem auto;
-  text-align: center;
-  padding: 2rem;
-  background-color: #112840;
-  border-radius: 8px;
-}
-
-.newsletter-signup p {
-  margin-bottom: 1.5rem;
-  color: #a5d8ff;
-}
-
-.email-form {
+.newsletter-bar {
+  background-color: #f1f5f9;
+  padding: 1.5rem;
+  border-radius: 6px;
+  margin-bottom: 2rem;
   display: flex;
-  max-width: 450px;
-  margin: 0 auto;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
 }
 
-.email-form input {
-  flex: 1;
-  padding: 0.8rem 1rem;
-  border: none;
-  border-radius: 4px 0 0 4px;
-  font-size: 0.9rem;
-  background-color: #f5f5f5;
-}
-
-.email-form button {
-  padding: 0.8rem 1.5rem;
-  background-color: #4dabf7;
-  color: #0a1929;
-  font-weight: bold;
-  border: none;
-  border-radius: 0 4px 4px 0;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.email-form button:hover {
-  background-color: #339af0;
-}
-
-.footer-info {
-  text-align: center;
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid #1c3d5d;
-}
-
-.highlight {
-  color: #4dabf7;
+.newsletter-text {
   font-weight: 600;
+  min-width: 150px;
 }
 
-.footer-info a {
-  text-decoration: none;
-  transition: opacity 0.3s ease;
+.newsletter-form {
+  display: flex;
+  flex: 1;
+  gap: 0.5rem;
 }
 
-.footer-info a:hover {
-  opacity: 0.8;
+.newsletter-form input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.625rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.875rem;
 }
 
+.newsletter-form button {
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.625rem 1.25rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background-color 0.2s ease;
+}
+
+.newsletter-form button:hover {
+  background-color: #3a7bc8;
+}
+
+.copyright {
+  text-align: center;
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.brand-name {
+  font-weight: 600;
+  color: #4a90e2;
+}
+
+/* Fix for submit button overlap */
+.submit-button-container {
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 5;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .footer-container {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .newsletter-bar {
     flex-direction: column;
+    align-items: flex-start;
   }
   
-  .footer-column {
-    margin-bottom: 1.5rem;
-    padding: 0;
+  .newsletter-form {
+    width: 100%;
   }
-  
-  .email-form {
-    flex-direction: column;
-  }
-  
-  .email-form input {
-    border-radius: 4px;
-    margin-bottom: 0.8rem;
-  }
-  
-  .email-form button {
-    border-radius: 4px;
+}
+
+@media (max-width: 480px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
   }
 }

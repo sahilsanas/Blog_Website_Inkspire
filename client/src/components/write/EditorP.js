@@ -299,7 +299,7 @@ const EditpostP = ({ placeholder, prevdata, pflag, post }) => {
                     </form>
                 </div>
             </div>
-            <Footer />
+            
         </div>
     );
 };

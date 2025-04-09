@@ -741,7 +741,7 @@ function UserProfile() {
           </div>
         </div>
       </div>
-      <Footer />
+      
     </div>
   );
 }
