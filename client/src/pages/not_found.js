@@ -1,61 +1,82 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 
-const Not_found = () => {
-    return (
-       <div style={{ 
-    display: 'flex', 
-    flexDirection: 'column', 
-    justifyContent: 'center', 
-    alignItems: 'center', 
-    height: '100vh', 
-    textAlign: 'center', 
-    padding: '20px', 
-    backgroundColor: '#f8f9fa' 
-}}>
-    <h1 style={{ 
-        fontSize: '96px', 
+const NotFound = () => {
+  return (
+    <div style={{ 
+      display: 'flex', 
+      flexDirection: 'column', 
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      height: '100vh', 
+      textAlign: 'center', 
+      padding: '20px', 
+      backgroundColor: '#0a1929' 
+    }}>
+      <h1 style={{ 
+        fontSize: '120px', 
         fontWeight: 'bold', 
         marginBottom: '10px', 
-        color: '#343a40' 
-    }}>404</h1>
-    <p style={{ 
-        fontSize: '24px', 
-        marginBottom: '20px', 
-        color: '#6c757d' 
-    }}>Page Not Found</p>
+        color: '#ffffff',
+        textShadow: '0 0 20px rgba(66, 153, 225, 0.6)' 
+      }}>404</h1>
+      
+      <span style={{ 
+        fontSize: '28px', 
+        marginBottom: '24px', 
+        color: '#90cdf4',
+        fontWeight: '300',
+        display: 'block'
+      }}>Oops! Page Not Found</span>
+      
+      <span style={{
+        fontSize: '16px',
+        maxWidth: '500px',
+        marginBottom: '36px',
+        color: '#a0aec0',
+        display: 'block'
+      }}>
+        The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+      </span>
 
-    <Link to="/" style={{ 
-        padding: '12px 24px', 
-        backgroundColor: '#007bff', 
-        color: '#fff', 
+      <a href="/" style={{ 
+        padding: '14px 32px', 
+        backgroundColor: '#1e4976', 
+        color: '#ffffff', 
         textDecoration: 'none', 
-        borderRadius: '5px', 
-        transition: 'background-color 0.3s ease' 
-    }}
-    onMouseOver={(e) => e.target.style.backgroundColor = '#0056b3'}
-    onMouseOut={(e) => e.target.style.backgroundColor = '#007bff'}>
-        GO TO HOME
-    </Link>
+        borderRadius: '8px', 
+        fontSize: '16px',
+        fontWeight: '500',
+        letterSpacing: '1px',
+        transition: 'all 0.3s ease',
+        border: '1px solid #2d6cb5',
+        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
+        display: 'inline-block'
+      }}
+      onMouseOver={(e) => {
+        e.target.style.backgroundColor = '#2d6cb5';
+        e.target.style.transform = 'translateY(-2px)';
+      }}
+      onMouseOut={(e) => {
+        e.target.style.backgroundColor = '#1e4976';
+        e.target.style.transform = 'translateY(0)';
+      }}>
+        RETURN HOME
+      </a>
 
-    <div style={{ marginTop: '30px' }}>
-        <a href="https://www.github.com/prashant0664" style={{ 
-            display: 'block', 
-            marginBottom: '10px', 
-            color: '#007bff', 
-            textDecoration: 'none', 
-            fontSize: '18px' 
-        }}>Guide/Code/Owner/License</a>
-        
-        <a href="https://www.github.com/prashant0664" style={{ 
-            color: '#007bff', 
-            textDecoration: 'none', 
-            fontSize: '18px' 
-        }}>Developed by Prashant0664</a>
+      <div style={{ marginTop: '40px' }}>
+        <span style={{ 
+          color: '#a0aec0', 
+          display: 'block',
+          fontSize: '14px'
+        }}>
+          Developed by <span style={{ 
+            color: '#63b3ed', 
+            fontWeight: '500'
+          }}>InkSpire Team</span>
+        </span>
+      </div>
     </div>
-</div>
-
-    )
+  )
 }
 
-export default Not_found
+export default NotFound
