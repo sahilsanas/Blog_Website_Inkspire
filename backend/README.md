@@ -1,8 +1,7 @@
+**Backend Configuration**
 You will only be needed to setup ```.env``` file to run the server.
 
 _Note: You do not need to keep production variables different to run in the localhost or local machine, they both can be same._
-
-*NOTE: If you face any challenges, error or have any doubt, just create a PR(recommended) or email me, I will respond as soon as possible:*
 
 ```.env``` file contains <br/>
 
