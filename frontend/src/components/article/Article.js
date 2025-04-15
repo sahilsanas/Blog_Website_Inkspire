@@ -572,7 +572,7 @@ function Article({ post, __id }) {
             </div>
           </div>
           {/* <Toaster/> */}
-          <Footer />
+          
         </div>
 
 
