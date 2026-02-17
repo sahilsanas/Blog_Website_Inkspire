@@ -5,7 +5,7 @@
   margin: auto;
   text-align: center;
   font-family: "Inter", sans-serif;
-  color: #09637E;
+  color: #09637e;
 }
 
 .parallax-img {
@@ -45,7 +45,7 @@
 
 .category-pill {
   background-color: rgba(9, 99, 126, 0.85);
-  color: #EBF4F6;
+  color: #ebf4f6;
   padding: 8px 18px;
   font-size: 14px;
   border: 1px solid rgba(122, 178, 178, 0.3);
@@ -63,14 +63,14 @@
 }
 
 .category-pill.active {
-  background-color: #7AB2B2;
+  background-color: #7ab2b2;
   border-color: #088395;
-  color: #09637E;
+  color: #09637e;
 }
 
 .dropbtn {
   background-color: rgba(9, 99, 126, 0.85);
-  color: #EBF4F6;
+  color: #ebf4f6;
   padding: 12px 24px;
   font-size: 16px;
   border: 1px solid rgba(122, 178, 178, 0.3);
@@ -93,7 +93,7 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #09637E;
+  background-color: #09637e;
   min-width: 160px;
   border-radius: 4px;
   box-shadow: 0px 8px 16px rgba(9, 99, 126, 0.3);
@@ -102,7 +102,7 @@
 }
 
 .dropdown-content .di {
-  color: #EBF4F6;
+  color: #ebf4f6;
   padding: 10px 16px;
   text-decoration: none;
   cursor: pointer;
@@ -124,7 +124,11 @@
 }
 
 .card-overlay {
-  background: linear-gradient(to bottom, rgba(9, 99, 126, 0.5), rgba(9, 99, 126, 0.85));
+  background: linear-gradient(
+    to bottom,
+    rgba(9, 99, 126, 0.5),
+    rgba(9, 99, 126, 0.85)
+  );
   position: absolute;
   top: 0;
   left: 0;
@@ -147,14 +151,14 @@
 }
 
 .blog-title::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, #088395, #7AB2B2);
+  background: linear-gradient(90deg, #088395, #7ab2b2);
   border-radius: 3px;
 }
 
@@ -162,7 +166,7 @@
   position: absolute;
   top: 20px;
   right: 20px;
-  background: linear-gradient(135deg, #088395, #09637E);
+  background: linear-gradient(135deg, #088395, #09637e);
   color: white;
   padding: 6px 12px;
   font-size: 12px;
@@ -177,7 +181,7 @@
   .card-text {
     font-size: 16px;
   }
-  
+
   .blog-title {
     font-size: 26px;
   }
@@ -198,7 +202,7 @@
     font-size: 12px;
     padding: 6px 14px;
   }
-  
+
   .blog-title {
     font-size: 22px;
     padding-bottom: 10px;

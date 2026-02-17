@@ -1,6 +1,7 @@
 /* footer.css */
 /* Basic reset and page setup for sticky footer */
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -13,7 +14,10 @@ body {
 }
 
 /* Main content should grow to push footer down */
-main, .content, #root, .app {
+main,
+.content,
+#root,
+.app {
   flex: 1 0 auto; /* Grow to take available space */
 }
 
@@ -40,11 +44,13 @@ main, .content, #root, .app {
 /* Sticky footer styles */
 .minimal-footer {
   flex-shrink: 0; /* Prevent footer from shrinking */
-  background-color: #EBF4F6;
+  background-color: #ebf4f6;
   padding: 2rem 1.5rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: #09637E;
-  border-top: 1px solid #7AB2B2;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  color: #09637e;
+  border-top: 1px solid #7ab2b2;
   width: 100%;
   box-sizing: border-box;
   position: relative; /* Ensure footer stays in document flow */
@@ -93,7 +99,7 @@ main, .content, #root, .app {
 
 .footer-link {
   cursor: pointer;
-  color: #09637E;
+  color: #09637e;
   transition: color 0.2s ease;
 }
 
@@ -127,7 +133,7 @@ main, .content, #root, .app {
   flex: 1;
   min-width: 0;
   padding: 0.625rem 1rem;
-  border: 1px solid #7AB2B2;
+  border: 1px solid #7ab2b2;
   border-radius: 4px;
   font-size: 0.875rem;
 }
@@ -144,13 +150,13 @@ main, .content, #root, .app {
 }
 
 .newsletter-form button:hover {
-  background-color: #09637E;
+  background-color: #09637e;
 }
 
 .copyright {
   text-align: center;
   font-size: 0.875rem;
-  color: #09637E;
+  color: #09637e;
 }
 
 .brand-name {
@@ -170,12 +176,12 @@ main, .content, #root, .app {
   .footer-grid {
     grid-template-columns: 1fr 1fr;
   }
-  
+
   .newsletter-bar {
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
   .newsletter-form {
     width: 100%;
   }

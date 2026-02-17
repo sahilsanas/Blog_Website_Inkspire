@@ -1,12 +1,15 @@
 .ProfileOfOtherUser {
     width: 100%;
-
+    min-height: 100vh;
+    background: linear-gradient(135deg, #EBF4F6 0%, rgba(122, 178, 178, 0.2) 100%);
 }
 
 .user_wrapper {
     text-align: center;
     margin-top: 65px;
     margin: auto;
+    max-width: 800px;
+    padding: 20px;
 }
 
 .user_wrapper .user_image {
@@ -15,27 +18,48 @@
     margin-top: 75px;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
+    align-items: center;
 }
 
 .user_wrapper .user_image img {
     margin: auto;
+    border-radius: 50%;
+    border: 4px solid #7AB2B2;
+    box-shadow: 0 8px 30px rgba(9, 99, 126, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.user_wrapper .user_image img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 12px 40px rgba(9, 99, 126, 0.2);
 }
 
 .user_wrapper .user_image span {
-    font-weight: 600;
-    color: rgb(39, 39, 39);
-    margin-top: 7px;
+    font-weight: 700;
+    color: #09637E;
+    margin-top: 12px;
+    font-size: 1.5rem;
+    font-family: 'Poppins', sans-serif;
 }
 
 .user_wrapper .user_about {
-    color: black;
-    font-size: 15px;
+    color: #333;
+    font-size: 16px;
     text-align: center;
+    line-height: 1.7;
+    background: white;
+    padding: 20px 30px;
+    border-radius: 16px;
+    margin-top: 20px;
+    box-shadow: 0 4px 20px rgba(9, 99, 126, 0.08);
+    border: 1px solid #EBF4F6;
 }
 
 .aboutn {
-    font-size: 30px;
+    font-size: 1.75rem;
+    color: #09637E;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
 }
 
 @media screen and (max-width:420px) {
@@ -77,17 +101,35 @@
 .imgpro {
     width: 300px;
     position: relative;
-    /* height:200px; */
-    /* width:auto; */
+    border-radius: 16px;
 }
 
 .user_about {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 .cent{
     text-align: center;
     cursor: pointer;
-    margin-top:15px;
+    margin-top: 20px;
+}
+.cent button,
+.cent a {
+    background: linear-gradient(135deg, #088395 0%, #09637E 100%);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 14px rgba(8, 131, 149, 0.3);
+    text-decoration: none;
+    display: inline-block;
+}
+.cent button:hover,
+.cent a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(8, 131, 149, 0.4);
 }
 .user_wrapper {
     margin: auto;
