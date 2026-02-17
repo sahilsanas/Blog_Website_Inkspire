@@ -2,7 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 :root {
-  --main: #F0A826
+  --main: #088395;
+  --primary-dark: #09637E;
+  --primary: #088395;
+  --primary-light: #7AB2B2;
+  --bg-light: #EBF4F6;
+  --accent: #7AB2B2;
 }
 
 * {

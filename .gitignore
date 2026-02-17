@@ -1,0 +1,52 @@
+# Node.js
+node_modules/
+.env
+.DS_Store
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Logs
+logs/
+*.log
+
+# Build outputs
+/dist/
+/build/
+
+# OS files
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/build/
+
+# Backend
+backend/node_modules/
+backend/dist/
+backend/build/
+
+# Misc
+*.swp
+*.swo
+
+# Ignore test outputs
+backend/testconnection.js
+backend/testEmail.js
+
+# Ignore coverage
+coverage/
+
+# Ignore local config
+backend/config/dev.js
+backend/config/prod.js
+
+# Ignore uploads
+backend/uploads/
+
+# Ignore public assets
+frontend/public/assets/
