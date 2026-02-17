@@ -5,7 +5,7 @@
   margin: auto;
   text-align: center;
   font-family: "Inter", sans-serif;
-  color: #e2e8f0;
+  color: #09637E;
 }
 
 .parallax-img {
@@ -14,7 +14,7 @@
   border-radius: 12px;
   overflow: hidden;
   margin: 10px 20px 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px rgba(9, 99, 126, 0.3);
 }
 
 .card-text {
@@ -44,36 +44,36 @@
 }
 
 .category-pill {
-  background-color: rgba(10, 25, 41, 0.85);
-  color: #f8fafc;
+  background-color: rgba(9, 99, 126, 0.85);
+  color: #EBF4F6;
   padding: 8px 18px;
   font-size: 14px;
-  border: 1px solid rgba(66, 153, 225, 0.3);
+  border: 1px solid rgba(122, 178, 178, 0.3);
   border-radius: 30px;
   display: inline-block;
   transition: all 0.2s ease;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(9, 99, 126, 0.15);
 }
 
 .category-pill:hover {
-  background-color: #1a365d;
-  border-color: rgba(66, 153, 225, 0.5);
+  background-color: #088395;
+  border-color: rgba(122, 178, 178, 0.5);
   transform: translateY(-2px);
 }
 
 .category-pill.active {
-  background-color: #2b6cb0;
-  border-color: #3182ce;
-  color: white;
+  background-color: #7AB2B2;
+  border-color: #088395;
+  color: #09637E;
 }
 
 .dropbtn {
-  background-color: rgba(10, 25, 41, 0.85);
-  color: #f8fafc;
+  background-color: rgba(9, 99, 126, 0.85);
+  color: #EBF4F6;
   padding: 12px 24px;
   font-size: 16px;
-  border: 1px solid rgba(66, 153, 225, 0.3);
+  border: 1px solid rgba(122, 178, 178, 0.3);
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -81,7 +81,7 @@
   gap: 10px;
   transition: all 0.2s ease;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(9, 99, 126, 0.15);
 }
 
 .dropdown {
@@ -93,16 +93,16 @@
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #0a1929;
+  background-color: #09637E;
   min-width: 160px;
   border-radius: 4px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(66, 153, 225, 0.2);
+  box-shadow: 0px 8px 16px rgba(9, 99, 126, 0.3);
+  border: 1px solid rgba(122, 178, 178, 0.2);
   z-index: 10;
 }
 
 .dropdown-content .di {
-  color: #e2e8f0;
+  color: #EBF4F6;
   padding: 10px 16px;
   text-decoration: none;
   cursor: pointer;
@@ -111,7 +111,7 @@
 }
 
 .dropdown-content .di:hover {
-  background-color: #1a365d;
+  background-color: #088395;
 }
 
 .dropdown:hover .dropdown-content {
@@ -119,12 +119,12 @@
 }
 
 .dropdown:hover .dropbtn {
-  background-color: #1a365d;
-  border-color: rgba(66, 153, 225, 0.5);
+  background-color: #088395;
+  border-color: rgba(122, 178, 178, 0.5);
 }
 
 .card-overlay {
-  background: linear-gradient(to bottom, rgba(3, 11, 23, 0.5), rgba(5, 16, 31, 0.85));
+  background: linear-gradient(to bottom, rgba(9, 99, 126, 0.5), rgba(9, 99, 126, 0.85));
   position: absolute;
   top: 0;
   left: 0;
@@ -154,7 +154,7 @@
   transform: translateX(-50%);
   width: 60px;
   height: 3px;
-  background: linear-gradient(90deg, #3182ce, #63b3ed);
+  background: linear-gradient(90deg, #088395, #7AB2B2);
   border-radius: 3px;
 }
 
@@ -162,14 +162,14 @@
   position: absolute;
   top: 20px;
   right: 20px;
-  background: linear-gradient(135deg, #3182ce, #2b6cb0);
+  background: linear-gradient(135deg, #088395, #09637E);
   color: white;
   padding: 6px 12px;
   font-size: 12px;
   font-weight: 600;
   border-radius: 4px;
   letter-spacing: 0.5px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 10px rgba(9, 99, 126, 0.3);
 }
 
 /* Responsive Styling */

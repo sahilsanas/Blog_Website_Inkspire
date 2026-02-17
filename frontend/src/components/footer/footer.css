@@ -40,11 +40,11 @@ main, .content, #root, .app {
 /* Sticky footer styles */
 .minimal-footer {
   flex-shrink: 0; /* Prevent footer from shrinking */
-  background-color: #f8f8f8;
+  background-color: #EBF4F6;
   padding: 2rem 1.5rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: #333;
-  border-top: 1px solid #eaeaea;
+  color: #09637E;
+  border-top: 1px solid #7AB2B2;
   width: 100%;
   box-sizing: border-box;
   position: relative; /* Ensure footer stays in document flow */
@@ -78,7 +78,7 @@ main, .content, #root, .app {
   left: 0;
   width: 30px;
   height: 2px;
-  background-color: #4a90e2;
+  background-color: #088395;
 }
 
 .footer-section ul {
@@ -93,16 +93,16 @@ main, .content, #root, .app {
 
 .footer-link {
   cursor: pointer;
-  color: #555;
+  color: #09637E;
   transition: color 0.2s ease;
 }
 
 .footer-link:hover {
-  color: #4a90e2;
+  color: #088395;
 }
 
 .newsletter-bar {
-  background-color: #f1f5f9;
+  background-color: rgba(122, 178, 178, 0.15);
   padding: 1.5rem;
   border-radius: 6px;
   margin-bottom: 2rem;
@@ -127,13 +127,13 @@ main, .content, #root, .app {
   flex: 1;
   min-width: 0;
   padding: 0.625rem 1rem;
-  border: 1px solid #ddd;
+  border: 1px solid #7AB2B2;
   border-radius: 4px;
   font-size: 0.875rem;
 }
 
 .newsletter-form button {
-  background-color: #4a90e2;
+  background-color: #088395;
   color: white;
   border: none;
   border-radius: 4px;
@@ -144,18 +144,18 @@ main, .content, #root, .app {
 }
 
 .newsletter-form button:hover {
-  background-color: #3a7bc8;
+  background-color: #09637E;
 }
 
 .copyright {
   text-align: center;
   font-size: 0.875rem;
-  color: #666;
+  color: #09637E;
 }
 
 .brand-name {
   font-weight: 600;
-  color: #4a90e2;
+  color: #088395;
 }
 
 /* Fix for submit button overlap */

@@ -5,7 +5,7 @@
   align-items: center;
   min-height: 100vh;
   padding: 20px;
-  background-color: #f5f5f5;
+  background-color: #EBF4F6;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -14,7 +14,7 @@
   width: 400px;
   max-width: 100%;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(9, 99, 126, 0.15);
   background-color: #fff;
   overflow: hidden;
 }
@@ -24,7 +24,7 @@
   display: flex;
   position: relative;
   height: 60px;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid #EBF4F6;
 }
 
 .auth-tab {
@@ -50,7 +50,7 @@
   left: 0;
   width: 50%;
   height: 100%;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #09637E 0%, #088395 100%);
   transition: transform 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
   border-radius: 0 0 4px 4px;
 }
@@ -168,8 +168,8 @@
 
 .input-field:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: #088395;
+  box-shadow: 0 0 0 3px rgba(8, 131, 149, 0.15);
   background-color: #fff;
 }
 
@@ -193,8 +193,8 @@
 }
 
 .success-message {
-  background-color: #e8f5e9;
-  color: #2e7d32;
+  background-color: #EBF4F6;
+  color: #09637E;
 }
 
 /* Terms of service text */
@@ -207,7 +207,7 @@
 }
 
 .highlight {
-  color: #667eea;
+  color: #088395;
   cursor: pointer;
   font-weight: 500;
 }
@@ -220,14 +220,14 @@
 }
 
 .forgot-password a {
-  color: #667eea;
+  color: #088395;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
 .forgot-password a:hover {
-  color: #764ba2;
+  color: #09637E;
   text-decoration: underline;
 }
 
@@ -241,18 +241,19 @@
   padding: 14px;
   border: none;
   border-radius: 8px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #09637E 0%, #088395 100%);
   color: #fff;
   font-weight: 600;
   font-size: 16px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(102, 126, 234, 0.2);
+  box-shadow: 0 4px 10px rgba(8, 131, 149, 0.25);
 }
 
 .auth-button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 15px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 6px 15px rgba(8, 131, 149, 0.35);
+  background: linear-gradient(135deg, #088395 0%, #7AB2B2 100%);
 }
 
 .auth-button:active {
